@@ -1,4 +1,4 @@
-﻿namespace MarketProjesi
+﻿namespace InventorySystem
 {
     partial class FrmLogin
     {

@@ -8,14 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MarketProject
+namespace InventorySystem
 {
-    public partial class FrmManageItems : Form
+    public partial class FrmListStocks : Form
     {
-        public FrmManageItems()
+        public FrmListStocks()
         {
             InitializeComponent();
-
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

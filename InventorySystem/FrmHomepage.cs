@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MarketProject
+namespace InventorySystem
 {
     public partial class FrmHomepage : Form
     {
@@ -32,7 +32,12 @@ namespace MarketProject
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult dialogResult = MessageBox.Show("Application will be close. Are you sure?", "Sure? ", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+
         }
     }
 }

@@ -1,6 +1,6 @@
-﻿using MarketProject.Properties;
+﻿using InventorySystem.Properties;
 
-namespace MarketProject
+namespace InventorySystem
 {
     partial class FrmHomepage
     {

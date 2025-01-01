@@ -1,6 +1,6 @@
-using MarketProject;
+using InventorySystem;
 
-namespace MarketProjesi
+namespace InventorySystem
 {
     public partial class FrmLogin : Form
     {
