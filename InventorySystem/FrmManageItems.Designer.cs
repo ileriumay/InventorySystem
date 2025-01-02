@@ -2,15 +2,8 @@
 {
     partial class FrmManageItems
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,137 +13,215 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            gridItems = new DataGridView();
+            dataGridView1 = new DataGridView();
+            CategoryBox = new TextBox();
+            ProductNameBox = new TextBox();
+            DescriptionBox = new TextBox();
+            UnitBox = new TextBox();
+            AmountBox = new TextBox();
+            btnEdit = new Button();
             btnCancel = new Button();
-            btnSave = new Button();
+            btnDelete = new Button();
             groupBox1 = new GroupBox();
-            Id = new DataGridViewTextBoxColumn();
-            Category = new DataGridViewTextBoxColumn();
-            ProductName = new DataGridViewTextBoxColumn();
-            Description = new DataGridViewTextBoxColumn();
-            Unit = new DataGridViewTextBoxColumn();
-            Price = new DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)gridItems).BeginInit();
+            editAmount = new TextBox();
+            editUnit = new TextBox();
+            editDescription = new TextBox();
+            editProduct = new TextBox();
+            editCategory = new TextBox();
+            groupBox2 = new GroupBox();
+            btnE = new Button();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
-            // gridItems
+            // dataGridView1
             // 
-            gridItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            gridItems.BackgroundColor = SystemColors.ControlLight;
-            gridItems.CellBorderStyle = DataGridViewCellBorderStyle.Sunken;
-            gridItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            gridItems.Columns.AddRange(new DataGridViewColumn[] { Id, Category, ProductName, Description, Unit, Price });
-            gridItems.Dock = DockStyle.Fill;
-            gridItems.Location = new Point(0, 0);
-            gridItems.Name = "gridItems";
-            gridItems.RowHeadersWidth = 51;
-            gridItems.Size = new Size(857, 454);
-            gridItems.TabIndex = 0;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(-3, -1);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new Size(794, 307);
+            dataGridView1.TabIndex = 0;
+            dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
+            // 
+            // CategoryBox
+            // 
+            CategoryBox.Location = new Point(12, 20);
+            CategoryBox.Name = "CategoryBox";
+            CategoryBox.Size = new Size(125, 27);
+            CategoryBox.TabIndex = 1;
+            // 
+            // ProductNameBox
+            // 
+            ProductNameBox.Location = new Point(143, 20);
+            ProductNameBox.Name = "ProductNameBox";
+            ProductNameBox.Size = new Size(125, 27);
+            ProductNameBox.TabIndex = 2;
+            // 
+            // DescriptionBox
+            // 
+            DescriptionBox.Location = new Point(274, 20);
+            DescriptionBox.Name = "DescriptionBox";
+            DescriptionBox.Size = new Size(125, 27);
+            DescriptionBox.TabIndex = 3;
+            // 
+            // UnitBox
+            // 
+            UnitBox.Location = new Point(405, 20);
+            UnitBox.Name = "UnitBox";
+            UnitBox.Size = new Size(125, 27);
+            UnitBox.TabIndex = 4;
+            // 
+            // AmountBox
+            // 
+            AmountBox.Location = new Point(536, 20);
+            AmountBox.Name = "AmountBox";
+            AmountBox.Size = new Size(125, 27);
+            AmountBox.TabIndex = 5;
+            // 
+            // btnEdit
+            // 
+            btnEdit.Location = new Point(667, 18);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new Size(82, 31);
+            btnEdit.TabIndex = 6;
+            btnEdit.Text = "Edit";
+            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
             // 
             // btnCancel
             // 
-            btnCancel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnCancel.Location = new Point(654, 17);
+            btnCancel.Location = new Point(697, 422);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(94, 29);
-            btnCancel.TabIndex = 1;
+            btnCancel.Size = new Size(82, 31);
+            btnCancel.TabIndex = 7;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
             // 
-            // btnSave
+            // btnDelete
             // 
-            btnSave.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnSave.Location = new Point(754, 17);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(94, 29);
-            btnSave.TabIndex = 2;
-            btnSave.Text = "Save";
-            btnSave.UseVisualStyleBackColor = true;
+            btnDelete.Location = new Point(609, 422);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(82, 31);
+            btnDelete.TabIndex = 8;
+            btnDelete.Text = "Delete";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(btnSave);
-            groupBox1.Controls.Add(btnCancel);
-            groupBox1.Dock = DockStyle.Bottom;
-            groupBox1.FlatStyle = FlatStyle.Flat;
-            groupBox1.Location = new Point(0, 396);
+            groupBox1.Controls.Add(btnEdit);
+            groupBox1.Controls.Add(editAmount);
+            groupBox1.Controls.Add(editUnit);
+            groupBox1.Controls.Add(editDescription);
+            groupBox1.Controls.Add(editProduct);
+            groupBox1.Controls.Add(editCategory);
+            groupBox1.Location = new Point(10, 312);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(857, 58);
-            groupBox1.TabIndex = 3;
+            groupBox1.Size = new Size(769, 53);
+            groupBox1.TabIndex = 9;
             groupBox1.TabStop = false;
+            groupBox1.Text = "Edit Product";
             // 
-            // Id
+            // editAmount
             // 
-            Id.HeaderText = "Id";
-            Id.MinimumWidth = 6;
-            Id.Name = "Id";
-            Id.ReadOnly = true;
+            editAmount.Location = new Point(536, 20);
+            editAmount.Name = "editAmount";
+            editAmount.Size = new Size(125, 27);
+            editAmount.TabIndex = 5;
             // 
-            // Category
+            // editUnit
             // 
-            Category.HeaderText = "Category";
-            Category.MinimumWidth = 6;
-            Category.Name = "Category";
+            editUnit.Location = new Point(405, 20);
+            editUnit.Name = "editUnit";
+            editUnit.Size = new Size(125, 27);
+            editUnit.TabIndex = 4;
             // 
-            // ProductName
+            // editDescription
             // 
-            ProductName.HeaderText = "Product Name";
-            ProductName.MinimumWidth = 6;
-            ProductName.Name = "ProductName";
+            editDescription.Location = new Point(274, 20);
+            editDescription.Name = "editDescription";
+            editDescription.Size = new Size(125, 27);
+            editDescription.TabIndex = 3;
             // 
-            // Description
+            // editProduct
             // 
-            Description.HeaderText = "Description";
-            Description.MinimumWidth = 6;
-            Description.Name = "Description";
+            editProduct.Location = new Point(143, 20);
+            editProduct.Name = "editProduct";
+            editProduct.Size = new Size(125, 27);
+            editProduct.TabIndex = 2;
             // 
-            // Unit
+            // editCategory
             // 
-            Unit.HeaderText = "Unit";
-            Unit.MinimumWidth = 6;
-            Unit.Name = "Unit";
+            editCategory.Location = new Point(12, 20);
+            editCategory.Name = "editCategory";
+            editCategory.Size = new Size(125, 27);
+            editCategory.TabIndex = 1;
             // 
-            // Price
+            // groupBox2
             // 
-            Price.HeaderText = "Price";
-            Price.MinimumWidth = 6;
-            Price.Name = "Price";
+            groupBox2.Controls.Add(btnE);
+            groupBox2.Controls.Add(AmountBox);
+            groupBox2.Controls.Add(UnitBox);
+            groupBox2.Controls.Add(DescriptionBox);
+            groupBox2.Controls.Add(ProductNameBox);
+            groupBox2.Controls.Add(CategoryBox);
+            groupBox2.Location = new Point(10, 367);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(769, 53);
+            groupBox2.TabIndex = 10;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Add Product";
+            // 
+            // btnE
+            // 
+            btnE.Location = new Point(667, 18);
+            btnE.Name = "btnE";
+            btnE.Size = new Size(82, 31);
+            btnE.TabIndex = 6;
+            btnE.Text = "Add";
+            btnE.UseVisualStyleBackColor = true;
+            btnE.Click += btnSave_Click;
             // 
             // FrmManageItems
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(857, 454);
+            ClientSize = new Size(784, 461);
+            Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            Controls.Add(gridItems);
+            Controls.Add(btnDelete);
+            Controls.Add(btnCancel);
+            Controls.Add(dataGridView1);
             Name = "FrmManageItems";
             Text = "Manage Items";
-            ((System.ComponentModel.ISupportInitialize)gridItems).EndInit();
+            Load += ManageItems_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
             ResumeLayout(false);
         }
 
-        #endregion
-
-        private DataGridView gridItems;
-        private Button btnCancel;
-        private Button btnSave;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox CategoryBox;
+        private System.Windows.Forms.TextBox ProductNameBox;
+        private System.Windows.Forms.TextBox DescriptionBox;
+        private System.Windows.Forms.TextBox UnitBox;
+        private System.Windows.Forms.TextBox AmountBox;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnDelete;
         private GroupBox groupBox1;
-        private DataGridViewTextBoxColumn Id;
-        private DataGridViewTextBoxColumn Category;
-        private DataGridViewTextBoxColumn ProductName;
-        private DataGridViewTextBoxColumn Description;
-        private DataGridViewTextBoxColumn Unit;
-        private DataGridViewTextBoxColumn Price;
+        private GroupBox groupBox2;
+        private Button btnE;
+        private TextBox editAmount;
+        private TextBox editUnit;
+        private TextBox editDescription;
+        private TextBox editProduct;
+        private TextBox editCategory;
     }
 }

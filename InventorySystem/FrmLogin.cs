@@ -19,11 +19,32 @@ namespace InventorySystem
 
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+       
+           private void btnLogin_Click(object sender, EventArgs e)
         {
-            var homepage = new FrmHomepage();
-            homepage.Show();
-            this.Hide();
+         
+            string validUsername = "username1";
+            string validPassword = "12345";
+
+            string enteredUsername = txtUsername.Text;
+            string enteredPassword = txtPassword.Text;
+
+           
+            if (enteredUsername == validUsername && enteredPassword == validPassword)
+            {
+            
+                MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                FrmHomepage mainMenu = new FrmHomepage(); 
+                mainMenu.Show();
+                this.Hide();
+            }
+            else
+            {
+               
+                MessageBox.Show("Invalid username or password. Please try again.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
     }
 }
+
