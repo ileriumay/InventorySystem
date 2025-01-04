@@ -21,7 +21,6 @@ namespace InventorySystem
         {
             var manageItems = new FrmManageItems();
             manageItems.Show();
-
         }
 
         private void btnListStocks_Click(object sender, EventArgs e)
@@ -32,12 +31,11 @@ namespace InventorySystem
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Application will be close. Are you sure?", "Sure? ", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Application will be closed. Are you sure?", "Sure?", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 Application.Exit();
             }
-
         }
     }
 }

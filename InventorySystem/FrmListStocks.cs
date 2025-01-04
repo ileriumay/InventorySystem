@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SQLite;
 using System.Windows.Forms;
-using Microsoft.Data.SqlClient;
 using InventorySystem.Classes;
-
 
 namespace InventorySystem
 {
@@ -22,29 +15,27 @@ namespace InventorySystem
 
         private void ListStock_Load(object sender, EventArgs e)
         {
-            SqlCommand CommandList = new SqlCommand("Select * from InventorySystem",SqlVariables.connection);
+            try
+            {
+                SqlVariables.CheckConnection(SqlVariables.connection);
 
-            SqlVariables.CheckConnetion(SqlVariables.connection);
+                SQLiteCommand CommandList = new SQLiteCommand("SELECT * FROM InventorySystem", SqlVariables.connection);
 
-            SqlDataAdapter da = new SqlDataAdapter(CommandList);
+                SQLiteDataAdapter da = new SQLiteDataAdapter(CommandList);
 
-            DataTable dt = new DataTable();
-
-            da.Fill(dt);
-
-            dataGridView1.DataSource = dt;
-
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dataGridView1.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void FrmListStocks_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

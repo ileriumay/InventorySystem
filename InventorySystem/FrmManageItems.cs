@@ -1,23 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Data.SqlClient;
+using System.Data.SQLite;
 using InventorySystem.Classes;
 
 namespace InventorySystem
 {
     public partial class FrmManageItems : Form
     {
+        private int SelectedID;
+
         public FrmManageItems()
         {
             InitializeComponent();
-
         }
 
         private void ManageItems_Load(object sender, EventArgs e)
@@ -33,7 +29,6 @@ namespace InventorySystem
 
         private void SetPlaceholder(TextBox textBox, string placeholder)
         {
-            
             textBox.Text = placeholder;
             textBox.ForeColor = Color.Gray;
 
@@ -55,28 +50,22 @@ namespace InventorySystem
                 }
             };
         }
+
         public void RefreshOrLoadPage()
         {
-            SqlCommand CommandList = new SqlCommand("Select * from InventorySystem", SqlVariables.connection);
+            SQLiteCommand CommandList = new SQLiteCommand("SELECT * FROM InventorySystem", SqlVariables.connection);
+            SqlVariables.CheckConnection(SqlVariables.connection);
 
-            SqlVariables.CheckConnetion(SqlVariables.connection);
-
-            SqlDataAdapter da = new SqlDataAdapter(CommandList);
-
+            SQLiteDataAdapter da = new SQLiteDataAdapter(CommandList);
             DataTable dt = new DataTable();
-
             da.Fill(dt);
 
             dataGridView1.DataSource = dt;
         }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void AmountBox_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -93,13 +82,12 @@ namespace InventorySystem
                 return;
             }
 
-            
-            SqlCommand commandadd = new SqlCommand(
+            SQLiteCommand commandadd = new SQLiteCommand(
                 "INSERT INTO InventorySystem (Category, ProductName, Description, Unit, Amount) VALUES (@Category, @ProductName, @Description, @Unit, @Amount)",
                 SqlVariables.connection
             );
 
-            SqlVariables.CheckConnetion(SqlVariables.connection);
+            SqlVariables.CheckConnection(SqlVariables.connection);
 
             commandadd.Parameters.AddWithValue("@Category", category);
             commandadd.Parameters.AddWithValue("@ProductName", productName);
@@ -112,7 +100,6 @@ namespace InventorySystem
             RefreshOrLoadPage();
 
             ClearTextBoxes();
-
             SetPlaceholder(CategoryBox, "Category");
             SetPlaceholder(ProductNameBox, "Product Name");
             SetPlaceholder(DescriptionBox, "Description");
@@ -131,32 +118,24 @@ namespace InventorySystem
             AmountBox.Clear();
         }
 
-        private void ResetPlaceholders()
-        {
-            if (string.IsNullOrWhiteSpace(CategoryBox.Text)) SetPlaceholder(CategoryBox, "Category");
-            if (string.IsNullOrWhiteSpace(ProductNameBox.Text)) SetPlaceholder(ProductNameBox, "Product Name");
-            if (string.IsNullOrWhiteSpace(DescriptionBox.Text)) SetPlaceholder(DescriptionBox, "Description");
-            if (string.IsNullOrWhiteSpace(UnitBox.Text)) SetPlaceholder(UnitBox, "Unit");
-            if (string.IsNullOrWhiteSpace(AmountBox.Text)) SetPlaceholder(AmountBox, "Amount");
-        }
-
-        private void CategoryBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        int SelectedID;
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            SqlCommand commanddelete = new SqlCommand("DELETE FROM InventorySystem WHERE ID = @ID", SqlVariables.connection);
+            if (SelectedID > 0)
+            {
+                SQLiteCommand commanddelete = new SQLiteCommand("DELETE FROM InventorySystem WHERE ID = @ID", SqlVariables.connection);
 
-            SqlVariables.CheckConnetion(SqlVariables.connection);
+                SqlVariables.CheckConnection(SqlVariables.connection);
 
-            commanddelete.Parameters.AddWithValue("@ID", SelectedID);
+                commanddelete.Parameters.AddWithValue("@ID", SelectedID);
 
-            commanddelete.ExecuteNonQuery();
+                commanddelete.ExecuteNonQuery();
 
-            RefreshOrLoadPage();
+                RefreshOrLoadPage();
+            }
+            else
+            {
+                MessageBox.Show("Please select an item to delete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
@@ -172,25 +151,33 @@ namespace InventorySystem
             }
             catch (Exception)
             {
+                SelectedID = 0;
             }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            SqlCommand commandEdit = new SqlCommand("UPDATE InventorySystem SET Category = @Category, ProductName = @ProductName, Description = @Description, Unit = @Unit, Amount = @Amount WHERE ID = @ID", SqlVariables.connection);
+            if (SelectedID > 0)
+            {
+                SQLiteCommand commandEdit = new SQLiteCommand("UPDATE InventorySystem SET Category = @Category, ProductName = @ProductName, Description = @Description, Unit = @Unit, Amount = @Amount WHERE ID = @ID", SqlVariables.connection);
 
-            SqlVariables.CheckConnetion(SqlVariables.connection);
+                SqlVariables.CheckConnection(SqlVariables.connection);
 
-            commandEdit.Parameters.AddWithValue("@Category", editCategory.Text);
-            commandEdit.Parameters.AddWithValue("@ProductName", editProduct.Text);
-            commandEdit.Parameters.AddWithValue("@Description", editDescription.Text);
-            commandEdit.Parameters.AddWithValue("@Unit", editUnit.Text);
-            commandEdit.Parameters.AddWithValue("@Amount", editAmount.Text);
-            commandEdit.Parameters.AddWithValue("@ID", SelectedID);
+                commandEdit.Parameters.AddWithValue("@Category", editCategory.Text);
+                commandEdit.Parameters.AddWithValue("@ProductName", editProduct.Text);
+                commandEdit.Parameters.AddWithValue("@Description", editDescription.Text);
+                commandEdit.Parameters.AddWithValue("@Unit", editUnit.Text);
+                commandEdit.Parameters.AddWithValue("@Amount", editAmount.Text);
+                commandEdit.Parameters.AddWithValue("@ID", SelectedID);
 
-            commandEdit.ExecuteNonQuery();
+                commandEdit.ExecuteNonQuery();
 
-            RefreshOrLoadPage();
+                RefreshOrLoadPage();
+            }
+            else
+            {
+                MessageBox.Show("Please select an item to edit.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
