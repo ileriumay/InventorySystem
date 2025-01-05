@@ -68,8 +68,10 @@
             txtPassword.Font = new Font("Segoe UI", 10.2F);
             txtPassword.Location = new Point(209, 247);
             txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '*';
             txtPassword.Size = new Size(125, 30);
             txtPassword.TabIndex = 3;
+            txtPassword.TextChanged += txtPassword_TextChanged;
             // 
             // btnLogin
             // 
