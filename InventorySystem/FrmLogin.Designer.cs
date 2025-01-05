@@ -54,7 +54,6 @@
             lblPassword.Size = new Size(99, 25);
             lblPassword.TabIndex = 1;
             lblPassword.Text = "Password :";
-            lblPassword.Click += lblPassword_Click;
             // 
             // txtUsername
             // 
@@ -96,7 +95,6 @@
             Controls.Add(lblUsername);
             Name = "FrmLogin";
             Text = "Login";
-            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }
