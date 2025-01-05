@@ -54,6 +54,11 @@ Instructions for Use
 📊 Database Management
 	• In the first stage, SQL Server was used, then switched to SQLite due to portability problems.
 	• If a suitable SQLite database file does not exist, the system creates it automatically
+For user guide:
+To download visual studio
+https://visualstudio.microsoft.com/tr/downloads/
+To dowload Sql
+https://www.sqlite.org/
 
 •This pdf file contains screenshots and explanations
 
