@@ -1,10 +1,11 @@
-Project name: Inventory system
+[ss.pdf](https://github.com/user-attachments/files/18311628/ss.pdf)[ss.pdf](https://github.com/user-attachments/files/18311623/ss.pdf)Project name: Inventory system
 📝 Project Description:
 
 This project is a Product inventory system developed using C# and SQLite. The project consists of four main interfaces that include listing, managing and user login validation of products:
 	• Login Screen
 	• Homepage (Main Menu)
 	• Manage Items
+
 	• List Items
 
 Initially, SQL Server was used, but due to portability issues, it was switched to SQLite. The application can run on different computers and automatically creates a database if it is missing.
@@ -53,6 +54,12 @@ Instructions for Use
 📊 Database Management
 	• In the first stage, SQL Server was used, then switched to SQLite due to portability problems.
 	• If a suitable SQLite database file does not exist, the system creates it automatically
+
+•This pdf file contains screenshots and explanations
+
+[ss.pdf](https://github.com/user-attachments/files/18311625/ss.pdf)
+
+
  
 Supporting this project and sharing information:
 Efe Küçük
@@ -60,3 +67,4 @@ Elif Canbeyli
 Perihan Çelikoğlu
 Umay İleri
 Thank you to my teammates!
+
