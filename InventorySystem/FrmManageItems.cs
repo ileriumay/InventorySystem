@@ -53,7 +53,7 @@ namespace InventorySystem
 
         public void RefreshOrLoadPage()
         {
-            SQLiteCommand CommandList = new SQLiteCommand("SELECT * FROM InventorySystem", SqlVariables.connection);
+            SQLiteCommand CommandList = new SQLiteCommand("SELECT * FROM Items", SqlVariables.connection);
             SqlVariables.CheckConnection(SqlVariables.connection);
 
             SQLiteDataAdapter da = new SQLiteDataAdapter(CommandList);
@@ -83,7 +83,7 @@ namespace InventorySystem
             }
 
             SQLiteCommand commandadd = new SQLiteCommand(
-                "INSERT INTO InventorySystem (Category, ProductName, Description, Unit, Amount) VALUES (@Category, @ProductName, @Description, @Unit, @Amount)",
+                "INSERT INTO Items (Category, ProductName, Description, Unit, Amount) VALUES (@Category, @ProductName, @Description, @Unit, @Amount)",
                 SqlVariables.connection
             );
 
@@ -122,7 +122,7 @@ namespace InventorySystem
         {
             if (SelectedID > 0)
             {
-                SQLiteCommand commanddelete = new SQLiteCommand("DELETE FROM InventorySystem WHERE ID = @ID", SqlVariables.connection);
+                SQLiteCommand commanddelete = new SQLiteCommand("DELETE FROM Items WHERE ID = @ID", SqlVariables.connection);
 
                 SqlVariables.CheckConnection(SqlVariables.connection);
 
@@ -159,7 +159,7 @@ namespace InventorySystem
         {
             if (SelectedID > 0)
             {
-                SQLiteCommand commandEdit = new SQLiteCommand("UPDATE InventorySystem SET Category = @Category, ProductName = @ProductName, Description = @Description, Unit = @Unit, Amount = @Amount WHERE ID = @ID", SqlVariables.connection);
+                SQLiteCommand commandEdit = new SQLiteCommand("UPDATE Items SET Category = @Category, ProductName = @ProductName, Description = @Description, Unit = @Unit, Amount = @Amount WHERE ID = @ID", SqlVariables.connection);
 
                 SqlVariables.CheckConnection(SqlVariables.connection);
 

@@ -1,18 +1,25 @@
 using System;
+using System.Windows.Forms;
+using InventorySystem.Classes; // Veritabaný yardýmcý sýnýfýný kullanabilmek için
 
 namespace InventorySystem
 {
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main()
         {
-         
-            DatabaseHelper.InitializeDatabase();
+            // Veritabaný ve tabloyu oluþtur
+            SqlVariables.CreateDatabaseAndTableIfNotExists(); // Veritabaný ve tabloyu kontrol et
 
-           
-            Console.WriteLine("Application has started.");
+            // Uygulama yapýlandýrmasýný baþlat
+            ApplicationConfiguration.Initialize();
 
-         
+            // Login formunu baþlat
+            Application.Run(new FrmLogin());
         }
     }
 }

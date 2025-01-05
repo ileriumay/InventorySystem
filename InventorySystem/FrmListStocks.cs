@@ -19,7 +19,7 @@ namespace InventorySystem
             {
                 SqlVariables.CheckConnection(SqlVariables.connection);
 
-                SQLiteCommand CommandList = new SQLiteCommand("SELECT * FROM InventorySystem", SqlVariables.connection);
+                SQLiteCommand CommandList = new SQLiteCommand("SELECT * FROM Items", SqlVariables.connection);
 
                 SQLiteDataAdapter da = new SQLiteDataAdapter(CommandList);
 
